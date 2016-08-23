@@ -1,0 +1,9 @@
+[Unit]
+Description=Attraktor Tuerstatus
+
+[Service]
+Type=simple
+ExecStart=/opt/spaceapi/venv/bin/python /opt/spaceapi/spaceapi.py
+
+[Install]
+WantedBy=multi-user.target

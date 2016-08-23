@@ -1,0 +1,46 @@
+{
+  "api": "0.13",
+  "cache": {
+    "schedule": "m.15"
+  },
+  "contact": {
+    "email": "office@attraktor.org",
+    "facebook": "attraktoreV",
+    "google": {
+      "plus": "104693613124183393398"
+    },
+    "ml": "traktoristen@lists.attraktor.org",
+    "twitter": "@attraktor_org"
+  },
+  "feeds": {
+    "blog": {
+      "type": "rss",
+      "url": "http://blog.attraktor.org/feed/"
+    },
+    "calendar": {
+      "type": "ical",
+      "url": "http://wiki.attraktor.org/calendar.ics"
+    },
+    "wiki": {
+      "type": "atom",
+      "url": "http://wiki.attraktor.org/index.php?title=Special:RecentChanges&feed=atom"
+    }
+  },
+  "issue_report_channels": [
+    "email"
+  ],
+  "location": {
+    "address": "Eschelsweg 4, 22767 Hamburg, Germany",
+    "lat": 53.5498443,
+    "lon": 9.946661
+  },
+  "logo": "http://blog.attraktor.org/spaceapi/logo.png",
+  "space": "Attraktor Makerspace",
+  "state": {
+    "ext_open_detail": "unknown",
+    "lastchange": 0,
+    "message": "unbekannt",
+    "open": null
+  },
+  "url": "http://blog.attraktor.org/"
+}

@@ -1,0 +1,11 @@
+{
+  "HOST": "test.mosquitto.org",
+  "PORT": 1883,
+  "KEEPALIVE": 10,
+  "USERNAME": "",
+  "PASSWORD": "",
+  "CA_CERTS": "",
+  "DEVICE_ID": "dvarapala",
+  "DEVICE_NAME": "door status",
+  "TOPIC": "devices"
+}
