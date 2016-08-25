@@ -1,7 +1,7 @@
-import calendar
 import logging
 
 import homie  # https://github.com/jalmeroth/homie-python
+import arrow
 
 from config import MQTT_HOMIE_ENABLE
 
@@ -15,6 +15,9 @@ my_homie.setup()
 
 
 def publish(is_open, open_detail, message, last_change_time):
+    """
+    @type last_change_time: arrow.Arrow
+    """
     if not MQTT_HOMIE_ENABLE:
         return
 
@@ -37,5 +40,5 @@ def publish(is_open, open_detail, message, last_change_time):
     my_homie.setNodeProperty(
         node_state,
         "lastchange",
-        calendar.timegm(last_change_time.timetuple()),
+        last_change_time.timestamp,
         retain=True)

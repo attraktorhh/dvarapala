@@ -1,17 +1,19 @@
+#!/usr/bin/env python
 # coding=utf-8
 
-import datetime
 import logging
 from threading import Timer
 
-from . import door_state
-from . serial_communicator import (
-    SerialCommunicator, LED_OPEN_PUBLIC, LED_OPEN_MEMBERS, LED_CLOSED)
-from . import state_chooser_button
-from . import twitter
-from . import mqtt_homie
+import arrow
 
-from . config import PUBLIC_DEBOUNCE_SECS
+import door_state
+from serial_communicator import (
+    SerialCommunicator, LED_OPEN_PUBLIC, LED_OPEN_MEMBERS, LED_CLOSED)
+import state_chooser_button
+import twitter
+import mqtt_homie
+
+from config import PUBLIC_DEBOUNCE_SECS
 
 
 class Dvarapala(object):
@@ -31,7 +33,7 @@ class Dvarapala(object):
             self.button)
 
         self.state_open = None
-        self.state_last_change = datetime.datetime.fromtimestamp(0)
+        self.state_last_change = arrow.get(0)
         self.state_ext_open_detail = state_chooser_button.ESTATE_UNDEFINED
 
         self.public_state_open = self.state_open
@@ -56,7 +58,7 @@ class Dvarapala(object):
 
     def _set_state(self, detail_state):
         # set current state
-        self.state_last_change = datetime.datetime.now()
+        self.state_last_change = arrow.utcnow()
         self.state_ext_open_detail = detail_state
         self.state_open = self.state_ext_open_detail in [
             state_chooser_button.ESTATE_OPEN_FOR_PUBLIC,

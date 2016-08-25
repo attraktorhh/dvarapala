@@ -5,18 +5,23 @@ import tweepy
 
 from config import (TWITTER_CONSUMER_SECRET, TWITTER_CONSUMER_KEY,
                     TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_TOKEN_SECRET,
-                    TWITTER_MESSAGE, TWITTER_ENABLE)
+                    TWITTER_MESSAGE, TWITTER_ENABLE, TWITTER_TIME_FORMAT,
+                    TIME_ZONE)
 
 logger = logging.getLogger(__name__)
 
 
 def publish(is_open, open_detail, message, last_change_time):
+    """
+    @param last_change_time: arrow.Arrow
+    """
     if not TWITTER_ENABLE:
         return True
     logger.info("publishing to twitter")
 
-    twitter_message = last_change_time.strftime(
-        TWITTER_MESSAGE.format(message=message))
+    twitter_message = TWITTER_MESSAGE.format(
+        time=last_change_time.to(TIME_ZONE).format(TWITTER_TIME_FORMAT),
+        message=message)
 
     try:
         auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY,

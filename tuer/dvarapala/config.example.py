@@ -15,7 +15,9 @@ TWITTER_ACCESS_TOKEN_KEY = ""
 TWITTER_ACCESS_TOKEN_SECRET = ""
 TWITTER_CONSUMER_KEY = ""
 TWITTER_CONSUMER_SECRET = ""
-TWITTER_MESSAGE = "{message} [seit %d.%m.%Y %H:%M]"
+TWITTER_TIME_FORMAT = "DD.MM.YYYY HH:mm:ss"
+TWITTER_MESSAGE = "{message} [seit {time}]"
+
 
 MQTT_HOMIE_ENABLE = False
 # MQTT config: homie-config.json

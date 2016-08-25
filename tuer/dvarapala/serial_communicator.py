@@ -5,7 +5,7 @@ import logging
 import json
 import door_state
 import state_chooser_button
-from threading import Event
+from threading import Event, Thread
 
 from config import SERIAL_PORT, SERIAL_BAUD
 
@@ -109,7 +109,9 @@ class SerialCommunicator(object):
                     self._run_delay_event.clear()
             except KeyboardInterrupt:
                 self._logger.info("KeyboardInterrupt. Quit.")
-                self._uc_connection.close()
+                t = Thread(target=self._uc_connection.close)
+                t.start()
+                t.join(timeout=5)
                 break
             except:
                 self._logger.error("error occurred. restarting serial.")
